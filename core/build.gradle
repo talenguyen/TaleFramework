@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath rootProject.ext.plugin.androidPlugin
+        classpath rootProject.ext.plugin.retroLambda
+        classpath rootProject.ext.plugin.androidApt
+    }
+}
+apply plugin: 'com.android.library'
+apply plugin: 'retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.config.compileSdkVersion
+    buildToolsVersion rootProject.ext.config.buildToolsVersion
+
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.config.minSdkVersion
+        targetSdkVersion rootProject.ext.config.compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    // Configure for RetroLambda
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dependency = rootProject.ext.dependency
+
+    compile dependency.supportv4
+    compile dependency.cardviewv7
+    compile dependency.appcompatv7
+    compile dependency.gridlayoutv7
+    compile dependency.recyclerviewv7
+
+    // Inject dependencies
+    compile dependency.dagger
+    apt dependency.daggerCompiler
+
+    // View Inject dependencies
+    compile dependency.butterknife
+
+    // Log
+    compile dependency.timber
+
+    // RxAndroid
+    compile dependency.rxAndroid
+
+}

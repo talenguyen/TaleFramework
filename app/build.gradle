@@ -1,0 +1,115 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath rootProject.ext.plugin.androidPlugin
+        classpath rootProject.ext.plugin.retroLambda
+        classpath rootProject.ext.plugin.androidApt
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.config.compileSdkVersion
+    buildToolsVersion rootProject.ext.config.buildToolsVersion
+
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    defaultConfig {
+        applicationId "com.tale.taleframework"
+        minSdkVersion rootProject.ext.config.minSdkVersion
+        targetSdkVersion rootProject.ext.config.compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.dev'
+            versionNameSuffix '-dev'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        release {
+            try {
+                storeFile file(STORE_FILE)
+                storePassword STORE_PASSWORD
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+        }
+    }
+
+    // Configure for RetroLambda
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    retrolambda {
+//        jdk System.getenv("JAVA8_HOME")
+//        oldJdk System.getenv("JAVA_HOME")
+//        javaVersion JavaVersion.VERSION_1_7
+//    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile project(':core')
+
+    def dependency = rootProject.ext.dependency
+
+    // Inject dependencies
+    compile dependency.dagger
+    apt dependency.daggerCompiler
+
+    // View Inject dependencies
+    compile dependency.butterknife
+
+    // Log
+    compile dependency.timber
+
+    // RxAndroid
+    compile dependency.rxAndroid
+
+    ///////////////////////////////////////////////////////////////
+    // TESTING
+    ///////////////////////////////////////////////////////////////
+    androidTestCompile 'org.mockito:mockito-core:1.9.5'
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.1'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.1'
+    androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+    androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
+    androidTestApt dependency.daggerCompiler
+    androidTestCompile dependency.espressoCore
+    androidTestCompile dependency.testingSupportLib
+
+}
+
+apt {
+    arguments {
+        resourcePackageName android.defaultConfig.applicationId
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+    }
+}
