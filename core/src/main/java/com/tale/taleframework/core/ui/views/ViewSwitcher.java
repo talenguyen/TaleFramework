@@ -6,8 +6,13 @@ public class ViewSwitcher {
 
     private View mainView;
     private View alterView;
+    private boolean isMainShowing = true;
 
     public void showMainView(boolean show) {
+        if (isMainShowing == show) {
+            return;
+        }
+        isMainShowing = show;
         if (mainView != null) {
             mainView.setVisibility(show ? View.VISIBLE : View.GONE);
         }
