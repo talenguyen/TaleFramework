@@ -21,15 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service
-            android:name=".services.Intent1"
-            android:exported="false"
-            />
-        <service
-            android:name=".services.Intent2"
-            android:exported="false"
-            />
-        <service
+	    <service
             android:name=".services.StringLoaderService"
             android:exported="false"
             />
