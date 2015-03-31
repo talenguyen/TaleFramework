@@ -39,4 +39,8 @@ public abstract class BaseApp extends Application {
     public static BaseApp get(Context context) {
         return (BaseApp) context.getApplicationContext();
     }
+
+    public ObjectGraph getObjectGraph() {
+        return objectGraph;
+    }
 }

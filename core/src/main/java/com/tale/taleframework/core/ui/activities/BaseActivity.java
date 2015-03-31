@@ -78,11 +78,18 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     protected void injectDependencies() {
         final BaseApp application = BaseApp.get(this);
-        activityObjectGraph = application.plus(getModules());
-        activityObjectGraph.inject(this);
+        final Object[] modules = getModules();
+        if (modules == null || modules.length == 0) {
+            activityObjectGraph = application.getObjectGraph();
+        } else {
+            activityObjectGraph = application.plus(modules);
+            activityObjectGraph.inject(this);
+        }
     }
 
-    protected abstract Object[] getModules();
+    protected Object[] getModules() {
+        return null;
+    }
 
     public ObjectGraph getActivityObjectGraph() {
         return activityObjectGraph;

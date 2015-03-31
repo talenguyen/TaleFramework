@@ -9,10 +9,7 @@ import dagger.Provides;
  * Created by tale on 3/8/15.
  */
 @Module(
-        library = true,
-        includes = {
-                ManagerModule.class
-        }
+        library = true
 )
 public class RootModule {
     private Application application;
