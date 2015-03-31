@@ -11,9 +11,9 @@ import com.tale.taleframework.core.ui.widget.NoNetworkView;
 /**
  * Created by Larry on 3/31/2015.
  */
-public abstract class NetworkFragment extends BaseFragment {
+public abstract class NetworkFragment extends LoadingFragment {
 
-    private ViewSwitcher viewSwitcher;
+    private ViewSwitcher noNetworkViewSwitcher;
     private View.OnClickListener retryClickListener;
 
     protected abstract View getMainView();
@@ -32,15 +32,15 @@ public abstract class NetworkFragment extends BaseFragment {
 
     protected void checkNetworkConnection() {
         if (!isNetworkConnected()) {
-            if (viewSwitcher == null) {
+            if (noNetworkViewSwitcher == null) {
                 final View noNetworkView = getNoNetworkView();
                 if (noNetworkView == null) {
                     return;
                 }
                 final View mainView = getMainView();
-                viewSwitcher = new ViewSwitcher();
-                viewSwitcher.setAlterView(noNetworkView);
-                viewSwitcher.setMainView(mainView);
+                noNetworkViewSwitcher = new ViewSwitcher();
+                noNetworkViewSwitcher.setAlterView(noNetworkView);
+                noNetworkViewSwitcher.setMainView(mainView);
                 if (retryClickListener == null) {
                     retryClickListener = new View.OnClickListener() {
                         @Override
@@ -52,12 +52,12 @@ public abstract class NetworkFragment extends BaseFragment {
                 ((NoNetworkView) noNetworkView).getIconView().setOnClickListener
                     (retryClickListener);
             }
-            if (viewSwitcher != null) {
-                viewSwitcher.showMainView(false);
+            if (noNetworkViewSwitcher != null) {
+                noNetworkViewSwitcher.showMainView(false);
             }
         } else {
-            if (viewSwitcher != null) {
-                viewSwitcher.showMainView(true);
+            if (noNetworkViewSwitcher != null) {
+                noNetworkViewSwitcher.showMainView(true);
             }
         }
     }
