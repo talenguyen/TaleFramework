@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+	<ImageView
+			android:id="@+id/ivIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:src="@drawable/ic_no_connection"
+			/>
+	<TextView
+			android:id="@+id/lbNoNetwork"
+			android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/no_network_connection"
+			android:layout_below="@+id/ivIcon"
+			android:layout_centerHorizontal="true"
+			android:layout_margin="@dimen/padding_large"
+			/>
+
+	<TextView
+			android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/no_network_instruction"
+			android:layout_below="@+id/lbNoNetwork"
+			android:layout_centerHorizontal="true"
+			android:layout_margin="@dimen/padding_large"
+			/>
+
+</merge>

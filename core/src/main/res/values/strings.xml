@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TaleFramework</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+	<string name="no_network_connection">No network connection.</string>
+	<string name="try_again">Try Again</string>
+	<string name="no_network_instruction">Connect to network then \"tap the icon\" to try again.
+	</string>
 </resources>
