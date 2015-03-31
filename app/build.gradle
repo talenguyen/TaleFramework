@@ -46,15 +46,15 @@ android {
     }
     signingConfigs {
         release {
-            try {
-                storeFile file(STORE_FILE)
-                storePassword STORE_PASSWORD
-                keyAlias KEY_ALIAS
-                keyPassword KEY_PASSWORD
-            }
-            catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
-            }
+//            try {
+//                storeFile file(STORE_FILE)
+//                storePassword STORE_PASSWORD
+//                keyAlias KEY_ALIAS
+//                keyPassword KEY_PASSWORD
+//            }
+//            catch (ex) {
+//                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+//            }
         }
     }
 
@@ -63,12 +63,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-//    retrolambda {
-//        jdk System.getenv("JAVA8_HOME")
-//        oldJdk System.getenv("JAVA_HOME")
-//        javaVersion JavaVersion.VERSION_1_7
-//    }
 
 }
 
