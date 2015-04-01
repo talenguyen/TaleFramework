@@ -13,12 +13,22 @@ public class ViewSwitcher {
             return;
         }
         isMainShowing = show;
-        if (mainView != null) {
-            mainView.setVisibility(show ? View.VISIBLE : View.GONE);
+        if(show) {
+            if (mainView != null) {
+                mainView.setVisibility(View.VISIBLE);
+            }
+            if (alterView != null) {
+                alterView.setVisibility(View.GONE);
+            }
+        } else {
+            if (alterView != null) {
+                alterView.setVisibility(View.VISIBLE);
+            }
+            if (mainView != null) {
+                mainView.setVisibility(View.GONE);
+            }
         }
-        if (alterView != null) {
-            alterView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
+
     }
 
     public void setMainView(View mainView) {
