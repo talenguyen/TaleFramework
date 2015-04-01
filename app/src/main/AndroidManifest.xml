@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name=".ui.activities.StringLoaderActivity"
+            android:name=".ui.activities.TestFragmentActivity"
             android:label="@string/app_name"
             >
             <intent-filter>
