@@ -16,8 +16,6 @@
 
 package com.tale.taleframework.core.ui.activities;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -87,19 +85,28 @@ public abstract class BaseActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * To use @Inject annotation in this class. You must declare this class in a module then
+     * return that module here.
+     * @return modules which will be using in this class or Fragments.
+     */
     protected Object[] getModules() {
         return null;
     }
 
+    /**
+     * Getter for ObjectGraph which will be use to inject dependencies which declared by using
+     * Annotation @Inject.
+     * @return {@link dagger.ObjectGraph} object.
+     */
     public ObjectGraph getActivityObjectGraph() {
         return activityObjectGraph;
     }
 
+    /**
+     * Use to inject views which declared by using Annotation @InjectView.
+     */
     protected void injectViews() {
         ButterKnife.inject(this);
-    }
-
-    public Intent openActivityIntent(Class<? extends Activity> activityClass) {
-        return new Intent(this, activityClass);
     }
 }
