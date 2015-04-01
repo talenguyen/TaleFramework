@@ -45,11 +45,7 @@ dependencies {
 
     def dependency = rootProject.ext.dependency
 
-    compile dependency.supportv4
-    compile dependency.cardviewv7
     compile dependency.appcompatv7
-    compile dependency.gridlayoutv7
-    compile dependency.recyclerviewv7
 
     // Inject dependencies
     compile dependency.dagger
