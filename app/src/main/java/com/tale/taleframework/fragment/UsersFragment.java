@@ -28,7 +28,7 @@ import butterknife.InjectView;
 /**
  * Created by Giang Nguyen on 4/2/2015.
  */
-public class UsersFragment extends NetworkFragment implements UsersView{
+public class UsersFragment extends NetworkFragment implements UsersView {
 
     @InjectView(R.id.vNoNetwork)
     NoNetworkView vNoNetwork;

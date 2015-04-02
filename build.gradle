@@ -29,7 +29,7 @@ ext {
     butterKnifeVerion = '6.1.0'
     prettySharedPreferencesVersion = '1.0.2'
     timberVersion = '2.2.+'
-    picassoVersion = '2.3.2'
+    picassoVersion = '2.5.2'
     gsonVersion = '2.3.1'
     retrofitVersion = '1.9.0'
     urlconnectionVersion = '2.0.0'

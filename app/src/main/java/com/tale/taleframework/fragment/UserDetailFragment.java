@@ -99,6 +99,7 @@ public class UserDetailFragment extends NetworkFragment implements UserDetailVie
     public void onPause() {
         super.onPause();
         presenter.onStop();
+        imageLoader.cancelTag(this);
     }
 
     @Override
@@ -129,10 +130,11 @@ public class UserDetailFragment extends NetworkFragment implements UserDetailVie
 
     @Override
     public void render(User user) {
-        imageLoader.load(user.avatar_url, ivAvatar, R.drawable.ic_avatar_default);
+        imageLoader.load(user.avatar_url, ivAvatar, R.drawable.ic_avatar_default, this);
         tvName.setText(user.name);
         tvEmail.setText(user.email);
         tvLocation.setText(user.location);
         tvFollowers.setText(user.followers);
     }
+
 }
