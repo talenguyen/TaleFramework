@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.tale.mvp.model.User;
 import com.tale.taleframework.R;
+import com.tale.taleframework.util.EventBus;
 import com.tale.taleframework.util.ImageLoader;
 
 import butterknife.ButterKnife;
@@ -22,13 +23,19 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     @InjectView(R.id.tvLogin)
     TextView tvLogin;
 
-    public UserViewHolder(View itemView) {
+    private final EventBus eventBus;
+    private User user;
+
+    public UserViewHolder(View itemView, EventBus eventBus) {
         super(itemView);
         ButterKnife.inject(this, itemView);
+        this.eventBus = eventBus;
+        itemView.setOnClickListener(v -> this.eventBus.post(user));
     }
 
     public void bind(User user, ImageLoader imageLoader) {
         tvLogin.setText(user.login);
-        imageLoader.load(user.avatar_url, ivAvatar);
+        imageLoader.load(user.avatar_url, ivAvatar, R.drawable.ic_avatar_default);
+        this.user = user;
     }
 }

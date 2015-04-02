@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.tale.mvp.model.User;
 import com.tale.taleframework.R;
 import com.tale.taleframework.core.ui.adapter.RecyclerTypedAdapter;
+import com.tale.taleframework.util.EventBus;
 import com.tale.taleframework.util.ImageLoader;
 import com.tale.taleframework.viewholder.UserViewHolder;
 
@@ -22,9 +23,12 @@ public class UsersAdapter extends RecyclerTypedAdapter<User, UserViewHolder> {
     @Inject
     ImageLoader imageLoader;
 
+    @Inject
+    EventBus eventBus;
+
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new UserViewHolder(layoutInflater.inflate(R.layout.item_user, parent, false));
+        return new UserViewHolder(layoutInflater.inflate(R.layout.item_user, parent, false), eventBus);
     }
 
     @Override

@@ -4,18 +4,19 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import javax.inject.Inject;
-
 /**
  * Created by Giang Nguyen on 4/2/2015.
  */
 public class PicassoImageLoader implements ImageLoader {
 
-    @Inject public PicassoImageLoader() {
+    private final Picasso picasso;
+
+    public PicassoImageLoader(Picasso picasso) {
+        this.picasso = picasso;
     }
 
     @Override
-    public void load(String url, ImageView target) {
-        Picasso.with(target.getContext()).load(url).fit().centerCrop().into(target);
+    public void load(String url, ImageView target, int errorId) {
+        picasso.load(url).fit().centerCrop().error(errorId).into(target);
     }
 }

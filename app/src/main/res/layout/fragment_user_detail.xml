@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <com.tale.taleframework.core.ui.widget.NoNetworkView
+        android:id="@+id/vNoNetwork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/vProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/vMainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="@dimen/avatar_size_large"
+                    android:layout_height="@dimen/avatar_size_large"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+
+            <!--
+            @SerializedName("url") public String url;//: "https://api.github.com/users/octocat",
+            @SerializedName("type") public String type;//: "User",
+            @SerializedName("name") public String name;//: "monalisa octocat",
+            @SerializedName("company") public String company;//: "GitHub",
+            @SerializedName("location") public String location;//: "San Francisco",
+            @SerializedName("email") public String email;//: "octocat@github.com",
+            @SerializedName("bio") public String bio;//: "There once was...",
+            @SerializedName("public_repos") public String public_repos;//: 2,
+            @SerializedName("followers") public String followers;//: 20,
+            @SerializedName("created_at") public String created_at;//: "2008-01-14T04:33:35Z",
+            -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textAppearance="@style/AppTheme.TextMedium.Label" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/AppTheme.TextDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textAppearance="@style/AppTheme.TextMedium.Label" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/AppTheme.TextDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textAppearance="@style/AppTheme.TextMedium.Label" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/AppTheme.TextDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Followers"
+                android:textAppearance="@style/AppTheme.TextMedium.Label" />
+
+            <TextView
+                android:id="@+id/tvFollowers"
+                style="@style/AppTheme.TextDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Followers" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

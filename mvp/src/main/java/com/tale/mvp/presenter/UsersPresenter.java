@@ -26,7 +26,10 @@ public class UsersPresenter extends BasePresenter<UsersView, UserModel> {
         usersSubscription = model.getUsers()
                 .compose(RxHelper.<List<User>>applySchedulers())
                 .subscribe(users -> view.render(users),
-                        e -> e.printStackTrace(),
+                        e -> {
+                            view.showLoading(false);
+                            e.printStackTrace();
+                        },
                         () -> view.showLoading(false));
     }
 

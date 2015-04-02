@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.TextMedium" parent="Base.TextAppearance.AppCompat.Medium">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.TextMedium.Label">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.TextDisplay">
+        <item name="android:textAppearance">@style/AppTheme.TextMedium</item>
+        <item name="android:layout_margin">@dimen/padding_medium</item>
+    </style>
+
+</resources>
