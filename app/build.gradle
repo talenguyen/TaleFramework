@@ -70,8 +70,12 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile project(':core')
+    compile project(':mvp')
 
     def dependency = rootProject.ext.dependency
+
+    compile dependency.recyclerviewv7
+    compile dependency.cardviewv7
 
     // Inject dependencies
     compile dependency.dagger
@@ -86,15 +90,18 @@ dependencies {
     // RxAndroid
     compile dependency.rxAndroid
 
+    // ImageLoader
+    compile dependency.picasso
+
     ///////////////////////////////////////////////////////////////
     // TESTING
     ///////////////////////////////////////////////////////////////
-    androidTestCompile 'org.mockito:mockito-core:1.9.5'
-    androidTestCompile 'com.google.dexmaker:dexmaker:1.1'
-    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.1'
-    androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
-    androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
+//    androidTestCompile 'org.mockito:mockito-core:1.9.5'
+//    androidTestCompile 'com.google.dexmaker:dexmaker:1.1'
+//    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.1'
+//    androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
+//    androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+//    androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestApt dependency.daggerCompiler
     androidTestCompile dependency.espressoCore
     androidTestCompile dependency.testingSupportLib
