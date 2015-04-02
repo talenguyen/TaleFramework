@@ -46,6 +46,7 @@ dependencies {
     def dependency = rootProject.ext.dependency
 
     compile dependency.appcompatv7
+    compile dependency.recyclerviewv7
 
     // Inject dependencies
     compile dependency.dagger

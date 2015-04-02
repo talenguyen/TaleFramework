@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tale.taleframework.core.ui.activities;
+package com.tale.taleframework.core.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

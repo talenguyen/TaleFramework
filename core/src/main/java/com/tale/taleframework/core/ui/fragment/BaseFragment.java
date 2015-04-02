@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.tale.taleframework.core.ui.fragments;
+package com.tale.taleframework.core.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.tale.taleframework.core.ui.activities.BaseActivity;
+import com.tale.taleframework.core.ui.activity.BaseActivity;
 
 import butterknife.ButterKnife;
 

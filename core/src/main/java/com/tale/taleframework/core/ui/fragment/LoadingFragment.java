@@ -1,8 +1,8 @@
-package com.tale.taleframework.core.ui.fragments;
+package com.tale.taleframework.core.ui.fragment;
 
 import android.view.View;
 
-import com.tale.taleframework.core.ui.views.ViewSwitcher;
+import com.tale.taleframework.core.ui.view.ViewSwitcher;
 
 /**
  * Created by Larry on 3/31/2015.

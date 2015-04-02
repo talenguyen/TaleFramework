@@ -1,11 +1,11 @@
-package com.tale.taleframework.core.ui.fragments;
+package com.tale.taleframework.core.ui.fragment;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
 
-import com.tale.taleframework.core.ui.views.ViewSwitcher;
+import com.tale.taleframework.core.ui.view.ViewSwitcher;
 import com.tale.taleframework.core.ui.widget.NoNetworkView;
 
 /**
