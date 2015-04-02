@@ -59,14 +59,14 @@ public class UsersFragment extends NetworkFragment implements UsersView{
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+     public void onResume() {
+        super.onResume();
         presenter.onStart();
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
         presenter.onStop();
     }
 
