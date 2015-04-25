@@ -14,6 +14,7 @@ import com.tale.mvp.model.User;
 import com.tale.mvp.presenter.UsersPresenter;
 import com.tale.mvp.view.UsersView;
 import com.tale.taleframework.R;
+import com.tale.taleframework.activity.UsersActivity;
 import com.tale.taleframework.adapter.UsersAdapter;
 import com.tale.taleframework.core.ui.fragment.NetworkFragment;
 import com.tale.taleframework.core.ui.widget.NoNetworkView;
@@ -50,18 +51,24 @@ public class UsersFragment extends NetworkFragment implements UsersView {
     }
 
     @Override
+    protected void injectDependencies() {
+        super.injectDependencies();
+        ((UsersActivity) getActivity()).component().inject(this);
+    }
+
+    @Override
     protected void onInjected() {
         super.onInjected();
         setupLoading(rvUsers, vProgressBar);
         rvUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rvUsers.setAdapter(adapter);
-        presenter = new UsersPresenter(this, ModelManager.getGitUserModel());
+        presenter = new UsersPresenter();
     }
 
     @Override
      public void onResume() {
         super.onResume();
-        presenter.onStart();
+        presenter.onStart(this, ModelManager.getGitUserModel());
     }
 
     @Override

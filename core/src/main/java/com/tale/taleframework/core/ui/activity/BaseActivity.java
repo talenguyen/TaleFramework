@@ -20,17 +20,12 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
-import com.tale.taleframework.core.BaseApp;
-
 import butterknife.ButterKnife;
-import dagger.ObjectGraph;
 
 /**
  * Created by tale on 11/8/14.
  */
 public abstract class BaseActivity extends ActionBarActivity {
-
-    private ObjectGraph activityObjectGraph;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,37 +66,9 @@ public abstract class BaseActivity extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        activityObjectGraph = null;
     }
 
-    protected void injectDependencies() {
-        final BaseApp application = BaseApp.get(this);
-        final Object[] modules = getModules();
-        if (modules == null || modules.length == 0) {
-            activityObjectGraph = application.getObjectGraph();
-        } else {
-            activityObjectGraph = application.plus(modules);
-            activityObjectGraph.inject(this);
-        }
-    }
-
-    /**
-     * To use @Inject annotation in this class. You must declare this class in a module then
-     * return that module here.
-     * @return modules which will be using in this class or Fragments.
-     */
-    protected Object[] getModules() {
-        return null;
-    }
-
-    /**
-     * Getter for ObjectGraph which will be use to inject dependencies which declared by using
-     * Annotation @Inject.
-     * @return {@link dagger.ObjectGraph} object.
-     */
-    public ObjectGraph getActivityObjectGraph() {
-        return activityObjectGraph;
-    }
+    protected abstract void injectDependencies();
 
     /**
      * Use to inject views which declared by using Annotation @InjectView.

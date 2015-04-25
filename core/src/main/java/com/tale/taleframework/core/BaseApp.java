@@ -1,11 +1,9 @@
 package com.tale.taleframework.core;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.tale.taleframework.core.compat.PlatformSpecificImplementationFactory;
 
-import dagger.ObjectGraph;
 import timber.log.Timber;
 
 /**
@@ -13,11 +11,9 @@ import timber.log.Timber;
  */
 public abstract class BaseApp extends Application {
 
-    private ObjectGraph objectGraph;
-
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
-        objectGraph = ObjectGraph.create(getModules());
 
         if (isDebug()) {
             Timber.plant(new Timber.DebugTree());
@@ -30,17 +26,4 @@ public abstract class BaseApp extends Application {
 
     protected abstract boolean isDebug();
 
-    protected abstract Object[] getModules();
-
-    public ObjectGraph plus(Object... modules) {
-        return objectGraph.plus(modules);
-    }
-
-    public static BaseApp get(Context context) {
-        return (BaseApp) context.getApplicationContext();
-    }
-
-    public ObjectGraph getObjectGraph() {
-        return objectGraph;
-    }
 }

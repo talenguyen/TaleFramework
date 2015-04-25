@@ -26,6 +26,10 @@ public class UsersAdapter extends RecyclerTypedAdapter<User, UserViewHolder> {
     @Inject
     EventBus eventBus;
 
+    @Inject
+    public UsersAdapter() {
+    }
+
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new UserViewHolder(layoutInflater.inflate(R.layout.item_user, parent, false), eventBus);

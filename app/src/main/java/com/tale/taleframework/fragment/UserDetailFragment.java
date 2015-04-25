@@ -86,13 +86,13 @@ public class UserDetailFragment extends NetworkFragment implements UserDetailVie
     protected void onInjected() {
         super.onInjected();
         setupLoading(vMainContent, vProgressBar);
-        presenter = new UserDetailPresenter(this, ModelManager.getGitUserModel(), username);
+        presenter = new UserDetailPresenter(username);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.onStart();
+        presenter.onStart(this, ModelManager.getGitUserModel());
     }
 
     @Override

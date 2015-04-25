@@ -12,16 +12,12 @@ import rx.Subscription;
 /**
  * Created by Giang Nguyen on 4/2/2015.
  */
-public class UsersPresenter extends BasePresenter<UsersView, UserModel> {
+public class UsersPresenter implements BasePresenter<UsersView, UserModel> {
 
     private Subscription usersSubscription;
 
-    public UsersPresenter(UsersView view, UserModel model) {
-        super(view, model);
-    }
-
     @Override
-    public void onStart() {
+    public void onStart(UsersView view, UserModel model) {
         view.showLoading(true);
         usersSubscription = model.getUsers()
                 .compose(RxHelper.<List<User>>applySchedulers())
@@ -35,7 +31,6 @@ public class UsersPresenter extends BasePresenter<UsersView, UserModel> {
 
     @Override
     public void onStop() {
-        super.onStop();
         if (usersSubscription != null) {
             usersSubscription.unsubscribe();
         }
