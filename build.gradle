@@ -21,10 +21,10 @@ allprojects {
 ext {
     // Version.
     androidPluginVersion = '1.1.0'
-    retroLambdaVersion = '2.4.1'
+    retroLambdaVersion = '3.1.0'
     androidAptVersion = '1.4'
 
-    androidSupportVersion = '21.0.3'
+    androidSupportVersion = '22.0.0'
     daggerVersion = '2.0'
     butterKnifeVerion = '6.1.0'
     prettySharedPreferencesVersion = '1.0.2'

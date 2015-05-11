@@ -8,7 +8,7 @@ buildscript {
     }
 }
 apply plugin: 'com.android.library'
-apply plugin: 'retrolambda'
+apply plugin: 'me.tatarka.retrolambda'
 
 
 android {
