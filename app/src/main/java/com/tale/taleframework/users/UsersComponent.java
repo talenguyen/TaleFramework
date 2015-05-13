@@ -5,6 +5,7 @@ import com.tale.taleframework.core.di.AbstractActivityComponent;
 import com.tale.taleframework.core.di.ActivityModule;
 import com.tale.taleframework.core.di.PerActivity;
 import com.tale.taleframework.di.SingletonComponent;
+import com.tale.taleframework.fragment.UserDetailFragment;
 import com.tale.taleframework.fragment.UsersFragment;
 
 import dagger.Component;
@@ -18,4 +19,6 @@ public interface UsersComponent extends AbstractActivityComponent {
     void inject(UsersActivity activity);
 
     void inject(UsersFragment fragment);
+
+    void inject(UserDetailFragment fragment);
 }

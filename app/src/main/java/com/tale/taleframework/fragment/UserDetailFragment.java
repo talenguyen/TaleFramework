@@ -16,6 +16,7 @@ import com.tale.mvp.model.User;
 import com.tale.mvp.presenter.UserDetailPresenter;
 import com.tale.mvp.view.UserDetailView;
 import com.tale.taleframework.R;
+import com.tale.taleframework.activity.UsersActivity;
 import com.tale.taleframework.core.ui.fragment.NetworkFragment;
 import com.tale.taleframework.core.ui.widget.NoNetworkView;
 import com.tale.taleframework.util.ImageLoader;
@@ -87,6 +88,12 @@ public class UserDetailFragment extends NetworkFragment implements UserDetailVie
         super.onInjected();
         setupLoading(vMainContent, vProgressBar);
         presenter = new UserDetailPresenter(username);
+    }
+
+    @Override
+    protected void injectDependencies() {
+        super.injectDependencies();
+        ((UsersActivity) getActivity()).component().inject(this);
     }
 
     @Override
