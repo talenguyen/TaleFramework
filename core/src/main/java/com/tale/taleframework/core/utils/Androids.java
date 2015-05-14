@@ -1,6 +1,10 @@
 package com.tale.taleframework.core.utils;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.UUID;
 
@@ -50,5 +54,25 @@ public class Androids {
         // http://stackoverflow.com/a/2853253/950427
         // Finally, combine the values we have found by using the UUID class to create a unique identifier
         return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public static void hideSoftKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static void showSoftKeyboard(View view) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager) view.getContext()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
     }
 }
