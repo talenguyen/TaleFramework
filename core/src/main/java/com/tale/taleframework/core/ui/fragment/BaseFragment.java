@@ -17,11 +17,9 @@
 package com.tale.taleframework.core.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.View;
 
-import butterknife.ButterKnife;
+import com.tale.taleframework.core.BaseApp;
 
 /**
  * Created by tale on 11/8/14.
@@ -29,22 +27,18 @@ import butterknife.ButterKnife;
 public class BaseFragment extends Fragment {
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         injectDependencies();
-        injectViews(view);
-        onInjected();
     }
 
-    protected void onInjected() {
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApp.getRefWatcher(getActivity()).watch(this);
     }
 
     protected void injectDependencies() {
-    }
-
-    protected void injectViews(View view) {
-        ButterKnife.inject(this, view);
     }
 
 }
