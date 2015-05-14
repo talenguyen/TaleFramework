@@ -47,6 +47,7 @@ public class UsersFragment extends NetworkFragment implements UsersView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_users, container, false);
         ButterKnife.inject(this, view);
+        onInjected();
         return view;
     }
 
@@ -56,9 +57,7 @@ public class UsersFragment extends NetworkFragment implements UsersView {
         ((UsersActivity) getActivity()).component().inject(this);
     }
 
-    @Override
     protected void onInjected() {
-        super.onInjected();
         setupLoading(rvUsers, vProgressBar);
         rvUsers.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rvUsers.setAdapter(adapter);

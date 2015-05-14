@@ -80,12 +80,11 @@ public class UserDetailFragment extends NetworkFragment implements UserDetailVie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_detail, container, false);
         ButterKnife.inject(this, view);
+        onInjected();
         return view;
     }
 
-    @Override
     protected void onInjected() {
-        super.onInjected();
         setupLoading(vMainContent, vProgressBar);
         presenter = new UserDetailPresenter(username);
     }
