@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
+        classpath 'com.android.tools.build:gradle:1.2.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,11 +20,11 @@ allprojects {
 
 ext {
     // Version.
-    androidPluginVersion = '1.1.0'
+    androidPluginVersion = '1.2.3'
     retroLambdaVersion = '3.1.0'
     androidAptVersion = '1.4'
 
-    androidSupportVersion = '22.0.0'
+    androidSupportVersion = '22.1.1'
     daggerVersion = '2.0'
     butterKnifeVerion = '6.1.0'
     prettySharedPreferencesVersion = '1.0.2'
@@ -44,9 +44,9 @@ ext {
     // Configuration.
     config = [
             minSdkVersion    : 14,
-            compileSdkVersion: 21,
-            buildToolsVersion: '21.1.1',
-            targetSdkVersion : 21
+            compileSdkVersion: 22,
+            buildToolsVersion: '22.0.1',
+            targetSdkVersion : 22
     ]
 
     plugin = [
